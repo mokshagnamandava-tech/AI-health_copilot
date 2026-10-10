@@ -7,3 +7,4 @@ PyMuPDF>=1.24
 Pillow>=10
 google-cloud-vision>=3.7
 openai>=1.40
+pytesseract
