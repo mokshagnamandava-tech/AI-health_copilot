@@ -1,0 +1,26 @@
+services:
+  api:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    env_file:
+      - backend/.env
+    environment:
+      DATABASE_PATH: /app/data/wellnote.db
+      CORS_ORIGINS: http://localhost:8080
+    volumes:
+      - wellnote_data:/app/data
+    ports:
+      - "8000:8000"
+  web:
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+      args:
+        VITE_API_BASE_URL: http://localhost:8000
+    ports:
+      - "8080:80"
+    depends_on:
+      - api
+volumes:
+  wellnote_data:
