@@ -1,4 +1,4 @@
-
+import os
 import io
 import re
 from pathlib import Path
@@ -10,8 +10,8 @@ from PIL import Image
 from .config import OPENAI_API_KEY, OPENAI_MODEL
 
 # Windows Tesseract executable
-pytesseract.pytesseract.tesseract_cmd = (
-    r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+pytesseract.pytesseract.tesseract_cmd = os.getenv(
+    "TESSERACT_CMD", "tesseract"
 )
 
 ALLOWED = {".pdf", ".png", ".jpg", ".jpeg", ".webp"}
