@@ -11,3 +11,11 @@ ENABLE_GOOGLE_VISION = os.getenv("ENABLE_GOOGLE_VISION", "false").lower() == "tr
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "").strip()
 OPENAI_MODEL = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
 CORS_ORIGINS = [x.strip() for x in os.getenv("CORS_ORIGINS", "http://localhost:5173").split(",") if x.strip()]
+CORS_ORIGINS = [
+    x.strip()
+    for x in os.getenv(
+        "CORS_ORIGINS",
+        "http://localhost:5173,https://wellnote-frontend.onrender.com"
+    ).split(",")
+    if x.strip()
+]
